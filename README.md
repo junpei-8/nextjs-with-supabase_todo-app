@@ -1,34 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Todo App（Next.js with Supabase）
 
-## Getting Started
+講座 URL: https://www.udemy.com/course/nextjs-supabase-web-tailwindcss/learn/lecture/31686566
 
-First, run the development server:
+講座 Github: https://github.com/GomaGoma676/todo-app-supabase-nextjs
 
-```bash
-npm run dev
-# or
-yarn dev
+Notion レポート： https://www.notion.so/itnav/Nextjs-Supabase-Web-1db9ae02cb354fc0a1f687d3d8d2dda8
+
+Notion レポート（このセクションのみ）： https://www.notion.so/itnav/Todo-App-SSG-CSF-e91ef986d99f44259910e7a7ef22e245
+
+## 使い方
+
+### env.local ファイルの追加
+
+env.local ファイルを生成し、Supabase の情報を変数に代入する必要がある。
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=[左タブの Settings > API ページから URL を確認できる]
+NEXT_PUBLIC_SUPABASE_API_KEY=[左タブの Settings > API ページから Public key を確認できる]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### パッケージのインストール
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+パッケージライブラリに`pnpm`を使用することを個人的に推奨している。
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```
+pnpm install
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Dev サーバーの起動
 
-## Learn More
+すべて SSR としてサーブされるため、SSG や ISR の正確な挙動は確認できない。
 
-To learn more about Next.js, take a look at the following resources:
+```
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prod サーバーの起動
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+SSG や ISR の挙動を確認する場合は、こちらでないと正確な挙動を確認することができない。
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+pnpm build && pnpm start
+```
