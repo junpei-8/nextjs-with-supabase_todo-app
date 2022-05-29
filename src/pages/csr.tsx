@@ -24,7 +24,7 @@ const Csr: NextPage = () => {
 
       setNotices(notices!);
     })();
-  });
+  }, []);
 
   return (
     <Layout title="CSR">
